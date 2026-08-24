@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pesquisa Interna e Painel da Oficina</title>
+    
+</head>
+<body>
+
+<div class="container">
+    <h2>📋 Pesquisa Interna da Oficina</h2>
+    <h4>Foco em Mão de Obra, Rotina e Estoque</h4>
+    
+    <form id="quizForm" onsubmit="event.preventDefault(); processarResposta();">
+        <!-- Seleção de Cargo -->
+        <div class="question">
+            <p>💼 Qual é o seu cargo ou função principal na oficina?</p>
+            <select id="cargo" required>
+                <option value="" disabled selected>Escolha sua profissão...</option>
+                <option value="Mecânico / Técnico">Mecânico / Técnico</option>
+                <option value="Auxiliar de Mecânico / Ajudante">Auxiliar de Mecânico / Ajudante</option>
+                <option value="Chefe de Oficina / Gerente">Chefe de Oficina / Gerente</option>
+                <option value="Atendente / Balconista de Peças">Atendente / Balconista de Peças</option>
+                <option value="Dono / Proprietário">Dono / Proprietário</option>
+            </select>
+        </div>
+
+        <!-- Pergunta 1 -->
+        <div class="question">
+            <p>1. Qual o maior obstáculo na rotina de trabalho dos funcionários hoje?</p>
+            <label><input type="radio" name="p1" value="Procurar peças" required> Perder tempo procurando onde a peça está guardada</label>
+            <label><input type="radio" name="p1" value="Mão suja no papel"> Parar o serviço para anotar peças com as mãos sujas de graxa</label>
+            <label><input type="radio" name="p1" value="Furo no estoque"> Esquecer de marcar a peça usada e dar furo no estoque</label>
+            <label><input type="radio" name="p1" value="Erro de aplicação"> Errar a aplicação por confundir peça Original de Paralela</label>
+        </div>
+
+        <!-- Pergunta 2 -->
+        <div class="question">
+            <p>2. Como o recurso de voz por Inteligência Artificial ajudaria mais no seu cargo?</p>
+            <label><input type="radio" name="p2" value="Digitar sozinho" required> Falando a peça para o app digitar sozinho sem eu tocar no celular</label>
+            <label><input type="radio" name="p2" value="Entender gírias"> Entendendo gírias da oficina (ex: buscar 'burrinho' e achar 'Cilindro Mestre')</label>
+            <label><input type="radio" name="p2" value="Prefiro tradicional"> Prefiro digitar normal, não vejo necessidade de voz ou IA</label>
+        </div>
+
+        <!-- Pergunta 3 -->
+        <div class="question">
+            <p>3. O que você gostaria de ver melhorado na sua rotina de trabalho?</p>
+            <label><input type="radio" name="p3" value="Melhorar organização" required> Melhorar a organização dos espaços e materiais</label>
+            <label><input type="radio" name="p3" value="Aumentar eficiência" required> Aumentar a eficiência dos processos</label>
+            <label><input type="radio" name="p3" value="Reduzir tempo de espera" required> Reduzir o tempo de espera para peças e serviços</label>
+        </div>
+
+        <!-- Pergunta 4 -->
+         <div class="question">
+            <p>4. Como você avalia a atual utilização da tecnologia em sua oficina?</p>
+            <label><input type="radio" name="p4" value="Muito boa" required> Muito boa</label>
+            <label><input type="radio" name="p4" value="Boa" required> Boa</label>
+            <label><input type="radio" name="p4" value="Regular" required> Regular</label>
+            <label><input type="radio" name="p4" value="Ruim" required> Ruim</label>
+        </div>
+
+          <!-- Pergunta 5 -->
+        <div class="question">
+            <p>5. Qual o maior prejuízo que um estoque desorganizado causa?</p>
+            <label><input type="radio" name="p5" value="Perder serviço por falta de peça" required> Perder serviço por falta de peça</label>
+            <label><input type="radio" name="p5" value="Comprar peças repetidas"> Comprar peças repetidas</label>
+            <label><input type="radio" name="p5" value="Mecânico parado esperando peça"> Mecânico parado esperando peça</label>
+            <label><input type="radio" name="p5" value="Peça antiga estragando"> Peça antiga estragando</label>
+        </div>
+
+        <!-- Pergunta 6 -->
+        <div class="question">
+            <p>6. Qual a melhor função para um aplicativo de estoque?</p>
+            <label><input type="radio" name="p6" value="Ler código de barras pelo celular" required> Ler código de barras pelo celular</label>
+            <label><input type="radio" name="p6" value="Alerta automático de peça acabando"> Alerta automático de peça acabando</label>
+            <label><input type="radio" name="p6" value="Ver quem usou e em qual carro"> Ver quem usou e em qual carro</label>
+            <label><input type="radio" name="p6" value="Cadastrar peça por foto da nota"> Cadastrar peça por foto da nota</label>
+        </div>
+
+        <!-- Pergunta 7 -->
+        <div class="question">
+            <p>7. Qual a maior dificuldade do sistema tradicional de controle?</p>
+            <label><input type="radio" name="p7" value="Pegar peça e esquecer de dar baixa" required> Pegar peça e esquecer de dar baixa</label>
+            <label><input type="radio" name="p7" value="Cadastrar peça com nomes diferentes"> Cadastrar peça com nomes diferentes</label>
+            <label><input type="radio" name="p7" value="Ter que ir ao computador toda hora"> Ter que ir ao computador toda hora</label>
+            <label><input type="radio" name="p7" value="Correria do dia a dia impede"> Correria do dia a dia impede</label>
+        </div>
+
+        <!-- Pergunta 8 -->
+        <div class="question">
+            <p>8. Qual o maior desafio para a equipe usar o aplicativo?</p>
+            <label><input type="radio" name="p8" value="Garantir que todos lancem tudo sempre" required> Garantir que todos lancem tudo sempre</label>
+            <label><input type="radio" name="p8" value="Falta de conhecimento das funções"> Falta de conhecimento das funções</label>
+            <label><input type="radio" name="p8" value="Costume dos funcionários antigos"> Costume dos funcionários antigos</label>
+            <label><input type="radio" name="p8" value="Aplicativo travar pela rede"> Aplicativo travar pela rede</label>
+        </div>
+
+        <button type="submit">Enviar Resposta e Compartilhar 🚀</button>
+    </form>
+</div>
+
+<!-- PAINEL DE PORCENTAGEM (ENQUETE) -->
+<div class="container painel">
+    <h3>📊 Resultado Parcial da Enquete</h3>
+    <div id="totalVotos">Total de respostas computadas: 0</div>
+    
+    <div id="estatisticas">
+        <!-- Os gráficos vão aparecer aqui automaticamente via Javascript -->
+    </div>
+    
+    <button id="btnZerar" class="btn-limpar" onclick="limparDados()">Zerar Estatísticas 🔄</button>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
