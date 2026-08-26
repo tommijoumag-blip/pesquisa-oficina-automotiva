@@ -1,3 +1,4 @@
+/* --- CONFIGURAÇÕES GERAIS --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,61 +11,97 @@ body {
     padding: 20px 10px;
     color: #333;
 }
+
 /* --- CONTAINER RESPONSIVO --- */
 .container {
     width: 100%;
-    max-width: 650px; /* Não passa disso no PC */
+    max-width: 650px;
     background: white;
-    padding: 20px;
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     margin: 0 auto 20px auto;
+    animation: surgirSuave 0.5s ease-out forwards;
 }
 
-/* --- TEXTOS E PERGUNTAS --- */
-h2 { color: #1e3d59; text-align: center; margin-bottom: 5px; font-size: 1.6em; }
-h4 { color: #17b978; text-align: center; margin-bottom: 25px; font-size: 1.1em; }
+/* --- TEXTOS E CABEÇALHO --- */
+h2 { color: #1e3d59; text-align: center; margin-bottom: 5px; font-size: 1.7em; }
+h4 { color: #17b978; text-align: center; margin-bottom: 20px; font-size: 1.15em; font-weight: bold; }
 
+.creditos-grupo {
+    text-align: center;
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    font-style: italic;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 15px;
+}
+
+.divisor {
+    border: 0;
+    border-top: 1px solid #e9ecef;
+    margin: 30px 0;
+}
+
+/* --- ELEMENTOS DAS PERGUNTAS (Tamanho de Texto Otimizado) --- */
 .question { 
-    margin-bottom: 25px; 
+    margin-bottom: 30px;
 }
 
-p { 
+.titulo-pergunta { 
     font-weight: bold; 
-    font-size: 1.05em; 
-    margin-bottom: 12px; 
+    font-size: 1.15em; /* Aumentado para melhor leitura no pátio */
+    color: #1e3d59;
+    margin-bottom: 14px; 
     line-height: 1.4; 
 }
 
-/* --- BOTÕES DE ALTERNATIVAS --- */
+.img-pergunta {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: block;
+}
+
+/* --- BOTÕES DE ALTERNATIVAS (Cards Modernos) --- */
 label {
-    display: flex; /* Alinha o rádio e o texto perfeitamente */
+    display: flex;
     align-items: center;
     background: #f8f9fa;
-    padding: 14px;
+    padding: 15px; /* Mais espaçoso para o toque do dedo */
     margin-bottom: 10px;
     border: 2px solid #e9ecef;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.95em;
-    transition: background 0.2s, border-color 0.2s;
+    font-size: 1em; /* Texto mais nítido sob luz forte */
+    font-weight: 500;
+    position: relative;
+    transition: all 0.25s ease;
 }
 
-label:hover { background: #e2e6ea; border-color: #ced4da; }
+label:hover { 
+    background: #f1f3f5; 
+    border-color: #17b978; 
+    box-shadow: 0 4px 8px rgba(23, 185, 120, 0.1);
+}
+
+label:has(input[type="radio"]:checked) {
+    background-color: #e8f9f1;
+    border-color: #17b978;
+    box-shadow: 0 4px 10px rgba(23, 185, 120, 0.15);
+    transform: translateY(-1px);
+}
 
 input[type="radio"] {
     margin-right: 12px;
     transform: scale(1.3);
-    flex-shrink: 0; /* Impede o botão redondo de esmagar em textos longos */
-}
-
-select {
-    width: 100%;
-    padding: 14px;
-    font-size: 1em;
-    border-radius: 8px;
-    border: 2px solid #ced4da;
-    background-color: #fff;
+    flex-shrink: 0;
+    accent-color: #17b978;
 }
 
 /* --- BOTÕES DE AÇÃO --- */
@@ -81,7 +118,7 @@ button {
     cursor: pointer;
     margin-top: 20px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background 0.2s ease, background 0.2s ease; box-shadow: 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover { 
@@ -91,16 +128,17 @@ button:hover {
 }
 
 button:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
 /* --- PAINEL DE ESTATÍSTICAS --- */
 .painel {
     background: #1e3d59;
     color: white;
 }
 
-.painel h3 { text-align: center; color: #17b978; margin-bottom: 15px; }
+.painel h3 { text-align: center; color: #17b978; margin-bottom: 15px; font-size: 1.3em; }
 
 #totalVotos {
     font-size: 1.05em;
@@ -112,14 +150,14 @@ button:active {
 .chart-item { margin-bottom: 15px; }
 
 .bar-text {
-    font-size: 0.9em;
+    font-size: 0.95em;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .bar-container {
-    background: #e9ecef;
+    background: rgba(255,255,255,0.1);
     border-radius: 6px;
     overflow: hidden;
 }
@@ -138,30 +176,62 @@ button:active {
 }
 .btn-limpar:hover { background: #c9302c; }
 
-/* --- ADAPTAÇÃO PARA TELAS PEQUENAS (CELULAR) --- */
+/* --- POP-UP DE CONFIRMAÇÃO --- */
+.modal-confirmacao {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+.modal-confirmacao.ativo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-conteudo {
+    background: #ffffff;
+    color: #333333;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal-confirmacao.ativo .modal-conteudo { transform: scale(1); }
+.modal-icone { font-size: 3em; margin-bottom: 10px; }
+.modal-conteudo h3 { margin-bottom: 10px; color: #17b978; }
+.modal-conteudo p { font-size: 0.95em; color: #2c3e50; margin-bottom: 20px; line-height: 1.5; }
+.modal-conteudo button { background: #17b978; color: white; border: none; padding: 10px 25px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; }
+.aviso-importante {
+    color: #d9534f; /* Vermelho de atenção/alerta discreto */
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+}
+
+/* --- RESPONSIBILIDADE MÓVEL --- */
 @media (max-width: 480px) {
     body { padding: 10px 5px; }
     .container { padding: 15px; border-radius: 8px; }
-    h2 { font-size: 1.3em; }
-    p { font-size: 0.95em; }
-    label { padding: 12px; font-size: 0.85em; }
+    h2 { font-size: 1.4em; }
+    h4 { font-size: 1em; }
+    .titulo-pergunta { font-size: 1.05em; }
+    label { padding: 13px; font-size: 0.9em; }
     button { padding: 14px; font-size: 1em; }
 }
-/* Cria a animação na memória do navegador */
-@keyframes surgirSuave {
-    from {
-        opacity: 0;
-        transform: translateY(15px); /* Começa um pouco abaixo */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Termina no lugar certo */
-    }
-}
 
-/* Aplica a animação no container do painel */
-.painel {
-    background: #1e3d59;
-    color: white;
-    animation: surgirSuave 0.6s ease-out forwards; /* Roda a animação em 0.6 segundos */
+@keyframes surgirSuave {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
