@@ -7,8 +7,70 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Estrutura da Animação de Boas-Vindas -->
+<div id="splashScreen" class="splash-screen">
+    <div class="splash-conteudo">
+        <div class="splash-logo">🛠️</div>
+        <div class="splash-titulo">Inovação Automotiva</div>
+        <div class="splash-subtitulo">Carregando pesquisa de campo...</div>
+    </div>
+</div>
 
-    <form id="quizForm" onsubmit="event.preventDefault(); processarResposta();">
+<!-- Estrutura da Animação de Despedida / Agradecimento -->
+<div id="despedidaScreen" class="despedida-screen">
+    <div class="despedida-conteudo" style="max-width: 500px; padding: 20px;">
+        <!-- Classe 'carrinho-animado' aplicada aqui no seu carrinho -->
+        <div class="carrinho-animado">🚗</div>
+        <div class="despedida-titulo">Muito Obrigado!</div>
+        <div class="despedida-texto" style="margin-bottom: 20px;">Suas respostas foram salvas com sucesso.</div>
+<!-- Bloco do Aviso Acadêmico adicionado aqui -->
+<!-- Classe 'aviso-academico' aplicada aqui para o efeito de vidro -->
+        <div class="aviso-academico">    
+            <p style="color: #1e3d59; font-weight: bold; font-size: 1.1em; margin-bottom: 5px;">⚠️ Fins Acadêmicos</p>
+            <p style="color: #ffffff; font-size: 0.95em; line-height: 1.4;">
+                Este projeto e as perguntas deste site são exclusivamente para fins acadêmicos, utilizados para desenvolvermos e validarmos as ideias do nosso projeto escolar/acadêmico.
+            </p>
+        </div>        
+    </div>
+</div>
+
+<header class="cabecalho-oficina">
+    <div class="cabecalho-conteudo">
+        <span class="cabecalho-logo">⚙️ Oficina Inteligente</span>
+        <!-- Botão Seletor de Tema -->
+        <button id="btnTema" class="btn-tema" onclick="alternarTema()">🌙 Escuro</button>
+    </div>
+</header>
+
+<!-- Menu de Navegação Rápida para as Perguntas -->
+<nav class="menu-perguntas">
+    <div class="menu-container">
+
+        <!-- Campo de busca interativo que substitui o span antigo -->
+        <div class="busca-container">
+            <input type="text" id="campoBusca" placeholder="🔍 Buscar pergunta... (ex: p1, cargo)" oninput="buscarPergunta()">
+        </div>
+
+        <!-- 🌟 O BOTÃO QUE ESTAVA FALTANDO ADICIONADO AQUI -->
+        <button class="botao-hamburguer" onclick="alternarMenuMobile()">☰</button>
+        
+        <div id="menuBotoes" class="menu-botoes">
+            <a href="#pergunta-cargo" class="btn-nav" onclick="fecharMenuMobile()">Cargo</a>
+            <a href="#p1" class="btn-nav" onclick="fecharMenuMobile()">1</a>
+            <a href="#p2" class="btn-nav" onclick="fecharMenuMobile()">2</a>
+            <a href="#p3" class="btn-nav" onclick="fecharMenuMobile()">3</a>
+            <a href="#p4" class="btn-nav" onclick="fecharMenuMobile()">4</a>
+            <a href="#p5" class="btn-nav" onclick="fecharMenuMobile()">5</a>
+            <a href="#p6" class="btn-nav" onclick="fecharMenuMobile()">6</a>
+            <a href="#p7" class="btn-nav" onclick="fecharMenuMobile()">7</a>
+            <a href="#p8" class="btn-nav" onclick="fecharMenuMobile()">8</a>
+            <a href="#painel-estatisticas" class="btn-nav visual-grafico" onclick="fecharMenuMobile()">📊</a>
+        </div>
+    </div>
+</nav>
+
+
+    <form id="quizForm" onsubmit="event.preventDefault(); processarResposta(event);">
         <div class="container">
             <h2>Pesquisa de Campo: Inovação para Oficinas Automotivas</h2>
             <h4>Foco em Mão de Obra, Rotina e Estoque</h4>
@@ -18,7 +80,7 @@
             </div>
 
             <!-- SELEÇÃO DE CARGO EM CARDS SELECIONÁVEIS -->
-            <div class="question">
+            <div class="question" id="pergunta-cargo"> 
                 <p class="titulo-pergunta">💼 Qual é o seu cargo ou função principal na oficina?</p>
                 <label>
                     <input type="radio" name="cargo" value="Mecânico / Técnico" required> 🛠️ Mecânico / Técnico
@@ -43,7 +105,7 @@
             <hr class="divisor">
 
             <!-- PERGUNTAS DO QUIZ (Com imagens inclusas) -->
-            <div class="question">
+            <div class="question"id="p1">
                 <p class="titulo-pergunta">1. Qual o maior obstáculo na rotina de trabalho dos funcionários hoje?</p>
                 <img src="imgoficina/estoquebaguncado.jpg" alt="Estoque Bagunçado" class="img-pergunta">
                 <label><input type="radio" name="p1" value="Procurar peças" required> Procurar peças (Perder tempo procurando)</label>
@@ -52,7 +114,7 @@
                 <label><input type="radio" name="p1" value="Erro de aplicação"> Erro de aplicação (Confundir Original de Paralela)</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p2">
                 <p class="titulo-pergunta">2. Como o recurso de voz por Inteligência Artificial ajudaria mais no seu cargo?</p>
                 <img src="imgoficina/mecanicomaossujas1.png" alt="Inteligência Artificial e Voz" class="img-pergunta">
                 <label><input type="radio" name="p2" value="Digitar sozinho" required> Digitar sozinho (Falando a peça para o app digitar)</label>
@@ -60,7 +122,7 @@
                 <label><input type="radio" name="p2" value="Prefiro tradicional"> Prefiro tradicional (Digitar normal, sem voz ou IA)</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p3">
                 <p class="titulo-pergunta">3. O que você gostaria de ver melhorado na sua rotina de trabalho?</p>
                 <img src="imgoficina/painelorganizado1.jpg" alt="Organização da Oficina" class="img-pergunta">
                 <label><input type="radio" name="p3" value="Melhorar organização" required> Melhorar organização dos espaços e materiais</label>
@@ -68,7 +130,7 @@
                 <label><input type="radio" name="p3" value="Reduzir tempo de espera"> Reduzir o tempo de espera para peças/serviços</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p4">
                 <p class="titulo-pergunta">4. Como você avalia a atual utilização da tecnologia em sua oficina?</p>
                 <img src="imgoficina/notebookdiagnostico3.png" alt="Tecnologia na Oficina" class="img-pergunta">
                 <label><input type="radio" name="p4" value="Muito boa" required> Muito boa</label>
@@ -77,7 +139,7 @@
                 <label><input type="radio" name="p4" value="Ruim"> Ruim</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p5">
                 <p class="titulo-pergunta">5. Qual o maior prejuízo que um estoque desorganizado causa?</p>
                 <img src="imgoficina/prejuizoestoque1.png" alt="Prejuízo no Estoque" class="img-pergunta">
                 <label><input type="radio" name="p5" value="Perder serviço por falta de peça" required> Perder serviço por falta de peça</label>
@@ -86,7 +148,7 @@
                 <label><input type="radio" name="p5" value="Peça antiga estragando"> Peça antiga estragando</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p6">
                 <p class="titulo-pergunta">6. Qual a melhor função para um aplicativo de estoque?</p>
                 <img src="imgoficina/codigodebarras3.png" alt="Aplicativo no Celular" class="img-pergunta">
                 <label><input type="radio" name="p6" value="Ler código de barras pelo celular" required> Ler código de barras pelo celular</label>
@@ -95,7 +157,7 @@
                 <label><input type="radio" name="p6" value="Cadastrar peça por foto da nota"> Cadastrar peça por foto da nota</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p7">
                 <p class="titulo-pergunta">7. Qual a maior dificuldade do sistema tradicional de controle?</p>
                 <img src="imgoficina/prancheta3.png" alt="Papelada Antiga" class="img-pergunta">
                 <label><input type="radio" name="p7" value="Pegar peça e esquecer de dar baixa" required> Pegar peça e esquecer de dar baixa</label>
@@ -104,7 +166,7 @@
                 <label><input type="radio" name="p7" value="Correria do dia a dia impede"> Correria do dia a dia impede</label>
             </div>
 
-            <div class="question">
+            <div class="question"id="p8">
                 <p class="titulo-pergunta">8. Qual o maior desafio para a equipe usar o aplicativo?</p>
                 <img src="imgoficina/equipemecanicos2.png" alt="Desafio de Equipe" class="img-pergunta">
                 <label><input type="radio" name="p8" value="Garantir que todos lancem tudo sempre" required> Garantir que todos lancem tudo sempre</label>
@@ -118,23 +180,27 @@
     </form>
 
     <!-- PAINEL DE ESTATÍSTICAS -->
-    <div class="container painel">
+    <div class="container painel" id="painel-estatisticas">
         <h3>📊 Resultado Parcial da Enquete</h3>
         <div id="totalVotos">Total de respostas computadas: 0</div>
         <div id="estatisticas"></div>
         <button id="btnZerar" class="btn-limpar" onclick="limparDados()" style="display:none;">Zerar Estatísticas 🔄</button>
     </div>
 
-    <!-- POP-UP DE CONFIRMAÇÃO PERSONALIZADA -->
-    <div id="modalConfirmacao" class="modal-confirmacao">
-        <div class="modal-conteudo">
-            <div class="modal-icone">✅</div>
-            <h3>Resposta Enviada!</h3>
-            <p>Obrigado por colaborar com a nossa Pesquisa. Seus dados foram salvos no painel.
-            <span class="aviso-importante">⚠️ Atenção: Os dados são temporários! Anotaremos as informações no caderno ou Documento oficial do Projeto.</span></p>
-            <button onclick="fecharModal()">Entendido 🛠️</button>
-        </div>
+    <footer class="rodape-oficina">
+    <div class="rodape-conteudo">
+        <p class="rodape-titulo-grupo">👥 Integrantes do Projeto</p>
+        <ul class="lista-integrantes">
+            <li>Caio Curtolo</li>
+            <li>Willian Santos</li>
+            <li>Caio Rodrigues</li>
+            <li>Paulo Neves</li>
+        </ul>
+        <div class="rodape-divisor"></div>
+        <p>© 2026 Projeto Inovação Automotiva. Todos os direitos reservados.</p>
+        <p style="font-size: 0.8em; opacity: 0.7; margin-top: 5px;">Desenvolvido exclusivamente para fins acadêmicos e de validação.</p>
     </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
